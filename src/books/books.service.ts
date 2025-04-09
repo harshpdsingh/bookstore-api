@@ -24,15 +24,16 @@ export class BooksService {
 
     findAll(query: any) {
         const { author, category, rating, title } = query;
+      
         return this.prisma.book.findMany({
-            where: {
-                author: author ? { contains: author } : undefined,
-                category: category ? { contains: category } : undefined,
-                rating: rating ? Number(rating) : undefined,
-                title: title ? { contains: title, mode: 'insensitive' } : undefined,
-            },
+          where: {
+            author: author ? { contains: author, mode: 'insensitive' } : undefined,
+            category: category ? { contains: category, mode: 'insensitive' } : undefined,
+            rating: rating ? { gte: Number(rating) } : undefined,
+            title: title ? { contains: title, mode: 'insensitive' } : undefined,
+          },
         });
-    }
+      }
 
     findOne(id: string) {
         return this.prisma.book.findUnique({ where: { id: Number(id) }, });
