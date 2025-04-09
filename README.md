@@ -8,7 +8,7 @@ A secure RESTful API for managing books with user authentication using JWT.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/bookstore-api.git
+   git clone https://github.com/harshpdsingh/bookstore-api.git
    cd bookstore-api
    ```
 
